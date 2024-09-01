@@ -5,66 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5-a-Side Fantasy Football</title>
     <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="auth-container">
-      <h2>Sign In</h2>
-      <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="signIn()">Sign In</button>
-      <p>
-        Don't have an account? <a href="#" onclick="toggleAuth()">Sign Up</a>
-      </p>
-    </div>
     <div class="container">
       <header>
-        <h1>5-a-Side Fantasy Football</h1>
+        <h1>5-a-Side Fantasy</h1>
       </header>
 
       <main>
-        <section class="team-setup">
-          <div class="team" id="team1">
-            <h2>Team 1</h2>
-            <div class="formation">
-              <div class="row">
-                <div class="player" data-position="forward1"></div>
-                <div class="player" data-position="forward2"></div>
-              </div>
-              <div class="row">
-                <div class="player" data-position="midfielder"></div>
-              </div>
-              <div class="row">
-                <div class="player" data-position="defender1"></div>
-                <div class="player" data-position="defender2"></div>
-              </div>
-              <div class="row">
-                <div class="player" data-position="goalkeeper"></div>
-              </div>
-            </div>
-          </div>
-          <div class="team" id="team2">
-            <h2>Team 2</h2>
-            <div class="formation">
-              <div class="row">
-                <div class="player" data-position="forward1"></div>
-                <div class="player" data-position="forward2"></div>
-              </div>
-              <div class="row">
-                <div class="player" data-position="midfielder"></div>
-              </div>
-              <div class="row">
-                <div class="player" data-position="defender1"></div>
-                <div class="player" data-position="defender2"></div>
-              </div>
-              <div class="row">
-                <div class="player" data-position="goalkeeper"></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="teams">Teams</button>
+          <button class="tab-btn" data-tab="add-player">Add Player</button>
+          <button class="tab-btn" data-tab="performance">Performance</button>
+        </div>
 
-        <section class="player-input">
+        <div id="teams" class="tab-content active">
+          <div class="team-card" id="team1">
+            <h2>Team 1</h2>
+            <div class="formation"></div>
+          </div>
+          <div class="team-card" id="team2">
+            <h2>Team 2</h2>
+            <div class="formation"></div>
+          </div>
+        </div>
+
+        <div id="add-player" class="tab-content">
           <h2>Add Player</h2>
           <select id="team-select">
             <option value="team1">Team 1</option>
@@ -81,17 +51,9 @@
             <option value="forward2">Forward 2</option>
           </select>
           <button onclick="addPlayer()">Add Player</button>
-        </section>
+        </div>
 
-        <section class="captain-selection">
-          <h2>Select Captain</h2>
-          <select id="captain-select">
-            <option value="">Select Captain</option>
-          </select>
-          <button onclick="selectCaptain()">Confirm Captain</button>
-        </section>
-
-        <section class="performance-update">
+        <div id="performance" class="tab-content">
           <h2>Update Performance</h2>
           <select id="update-team">
             <option value="team1">Team 1</option>
@@ -102,13 +64,32 @@
           </select>
           <button onclick="addGoal()">Add Goal</button>
           <button onclick="addAssist()">Add Assist</button>
-        </section>
+        </div>
+      </main>
 
-        <section class="points-display">
+      <div id="points-display" class="modal">
+        <div class="modal-content">
           <h2>Points</h2>
           <div id="points-list"></div>
-        </section>
-      </main>
+          <button onclick="closePointsModal()">Close</button>
+        </div>
+      </div>
+
+      <button id="fab" class="fab" onclick="openPointsModal()">
+        <i class="material-icons">leaderboard</i>
+      </button>
+
+      <nav class="bottom-nav">
+        <button onclick="showTab('teams')">
+          <i class="material-icons">groups</i>
+        </button>
+        <button onclick="showTab('add-player')">
+          <i class="material-icons">person_add</i>
+        </button>
+        <button onclick="showTab('performance')">
+          <i class="material-icons">update</i>
+        </button>
+      </nav>
     </div>
 
     <script src="script.js"></script>
