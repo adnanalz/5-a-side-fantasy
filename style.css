@@ -2,37 +2,69 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #f0f4f8;
-    color: #333;
 }
 
-.container {
+#app {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.screen {
     background: white;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-header {
+#sign-in-screen {
+    max-width: 400px;
+    margin: 50px auto;
     text-align: center;
-    margin-bottom: 30px;
 }
 
-h1 {
-    font-size: 2.5em;
-    color: #2c3e50;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+#sign-in-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h2 {
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #2c3e50;
 }
 
 .team-setup {
@@ -46,16 +78,15 @@ h2 {
     background-color: #ecf0f1;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.pitch {
+.formation {
     background-color: #27ae60;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 15px;
-    position: relative;
+    margin-bottom: 10px;
     height: 400px;
+    position: relative;
 }
 
 .player {
@@ -68,54 +99,27 @@ h2 {
     justify-content: center;
     color: white;
     font-size: 12px;
+    text-align: center;
     position: absolute;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .player:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* Fixed positions for 5-a-side formation */
-.player[data-position="goalkeeper"] { bottom: 10px; left: 50%; transform: translateX(-50%); }
-.player[data-position="defender1"] { bottom: 30%; left: 30%; }
-.player[data-position="defender2"] { bottom: 30%; right: 30%; }
-.player[data-position="midfielder"] { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.player[data-position="forward1"] { top: 20%; left: 30%; }
-.player[data-position="forward2"] { top: 20%; right: 30%; }
+.player[data-position="forward"] { top: 10%; left: 50%; transform: translateX(-50%); }
+.player[data-position="midfielder"] { top: 35%; left: 50%; transform: translateX(-50%); }
+.player[data-position="defender1"] { bottom: 35%; left: 30%; }
+.player[data-position="defender2"] { bottom: 35%; right: 30%; }
+.player[data-position="goalkeeper"] { bottom: 10%; left: 50%; transform: translateX(-50%); }
 
 .player-input, .performance-update, .points-display {
     background-color: #ecf0f1;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #2980b9;
 }
 
 #points-list {
@@ -126,21 +130,6 @@ button:hover {
 
 .team-points {
     width: 48%;
-    margin-bottom: 20px;
-}
-
-.team-points h3 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-}
-
-.player-points {
-    background: #fff;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 768px) {
@@ -151,12 +140,7 @@ button:hover {
         width: 100%;
         margin-bottom: 20px;
     }
-    .pitch {
-        height: 300px;
-    }
-    .player {
-        width: 50px;
-        height: 50px;
-        font-size: 10px;
+    .team-points {
+        width: 100%;
     }
 }

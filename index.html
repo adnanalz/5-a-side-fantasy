@@ -7,74 +7,97 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
+    <div id="app">
+      <div id="sign-in-screen" class="screen">
         <h1>5-a-Side Fantasy Football</h1>
-      </header>
+        <form id="sign-in-form">
+          <input type="email" id="email" placeholder="Email" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Sign In</button>
+        </form>
+        <p>
+          Don't have an account? <a href="#" id="toggle-sign-up">Sign Up</a>
+        </p>
+      </div>
 
-      <main>
-        <section class="team-setup">
-          <div class="team" id="team1">
-            <h2>Team 1</h2>
-            <div class="pitch">
-              <div class="player" data-position="forward1">FW1</div>
-              <div class="player" data-position="forward2">FW2</div>
-              <div class="player" data-position="midfielder">MF</div>
-              <div class="player" data-position="defender1">DF1</div>
-              <div class="player" data-position="defender2">DF2</div>
-              <div class="player" data-position="goalkeeper">GK</div>
+      <div id="main-screen" class="screen hidden">
+        <header>
+          <h1>5-a-Side Fantasy Football</h1>
+          <button id="sign-out">Sign Out</button>
+        </header>
+
+        <main>
+          <section class="team-setup">
+            <div class="team" id="team1">
+              <h2>Team 1</h2>
+              <div class="formation">
+                <div class="player" data-position="forward">FW</div>
+                <div class="player" data-position="midfielder">MF</div>
+                <div class="player" data-position="defender1">DF</div>
+                <div class="player" data-position="defender2">DF</div>
+                <div class="player" data-position="goalkeeper">GK</div>
+              </div>
+              <select id="captain-select-team1">
+                <option value="">Select Captain</option>
+              </select>
             </div>
-          </div>
-          <div class="team" id="team2">
-            <h2>Team 2</h2>
-            <div class="pitch">
-              <div class="player" data-position="forward1">FW1</div>
-              <div class="player" data-position="forward2">FW2</div>
-              <div class="player" data-position="midfielder">MF</div>
-              <div class="player" data-position="defender1">DF1</div>
-              <div class="player" data-position="defender2">DF2</div>
-              <div class="player" data-position="goalkeeper">GK</div>
+            <div class="team" id="team2">
+              <h2>Team 2</h2>
+              <div class="formation">
+                <div class="player" data-position="forward">FW</div>
+                <div class="player" data-position="midfielder">MF</div>
+                <div class="player" data-position="defender1">DF</div>
+                <div class="player" data-position="defender2">DF</div>
+                <div class="player" data-position="goalkeeper">GK</div>
+              </div>
+              <select id="captain-select-team2">
+                <option value="">Select Captain</option>
+              </select>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section class="player-input">
-          <h2>Add Player</h2>
-          <select id="team-select">
-            <option value="team1">Team 1</option>
-            <option value="team2">Team 2</option>
-          </select>
-          <input type="text" id="player-name" placeholder="Player Name" />
-          <input type="number" id="player-price" placeholder="Price" />
-          <select id="player-position">
-            <option value="goalkeeper">Goalkeeper</option>
-            <option value="defender1">Defender 1</option>
-            <option value="defender2">Defender 2</option>
-            <option value="midfielder">Midfielder</option>
-            <option value="forward1">Forward 1</option>
-            <option value="forward2">Forward 2</option>
-          </select>
-          <button onclick="addPlayer()">Add Player</button>
-        </section>
+          <section class="player-input">
+            <h2>Add Player</h2>
+            <select id="team-select">
+              <option value="team1">Team 1</option>
+              <option value="team2">Team 2</option>
+            </select>
+            <input type="text" id="player-name" placeholder="Player Name" />
+            <input type="number" id="player-price" placeholder="Price" />
+            <select id="player-position">
+              <option value="forward">Forward</option>
+              <option value="midfielder">Midfielder</option>
+              <option value="defender1">Defender 1</option>
+              <option value="defender2">Defender 2</option>
+              <option value="goalkeeper">Goalkeeper</option>
+            </select>
+            <button id="add-player">Add Player</button>
+          </section>
 
-        <section class="performance-update">
-          <h2>Update Performance</h2>
-          <select id="update-team">
-            <option value="team1">Team 1</option>
-            <option value="team2">Team 2</option>
-          </select>
-          <select id="update-player">
-            <option value="">Select Player</option>
-          </select>
-          <button onclick="addGoal()">Add Goal</button>
-          <button onclick="addAssist()">Add Assist</button>
-        </section>
+          <section class="performance-update">
+            <h2>Update Performance</h2>
+            <select id="update-team">
+              <option value="team1">Team 1</option>
+              <option value="team2">Team 2</option>
+            </select>
+            <select id="update-player">
+              <option value="">Select Player</option>
+            </select>
+            <button id="add-goal">Add Goal</button>
+            <button id="add-assist">Add Assist</button>
+          </section>
 
-        <section class="points-display">
-          <h2>Points</h2>
-          <div id="points-list"></div>
-        </section>
-      </main>
+          <section class="points-display">
+            <h2>Points</h2>
+            <div id="points-list"></div>
+          </section>
+        </main>
+      </div>
     </div>
 
     <script src="script.js"></script>
