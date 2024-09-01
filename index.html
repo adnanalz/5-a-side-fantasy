@@ -5,123 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5-a-Side Fantasy Football</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div id="auth-container">
-      <h2>Login or Sign Up</h2>
+      <h2>Sign In</h2>
       <input type="email" id="email" placeholder="Email" />
       <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
-      <button onclick="signup()">Sign Up</button>
-    </div>
-    <div id="logout-container" style="display: none">
-      <button onclick="logout()">Logout</button>
+      <button onclick="signIn()">Sign In</button>
+      <p>
+        Don't have an account? <a href="#" onclick="toggleAuth()">Sign Up</a>
+      </p>
     </div>
     <div class="container">
       <header>
         <h1>5-a-Side Fantasy Football</h1>
       </header>
 
-      <div class="gameweek-controls">
-        <button id="start-gameweek">Start Gameweek</button>
-        <button id="end-gameweek" disabled>End Gameweek</button>
-        <span>Current Gameweek: <span id="current-gameweek">0</span></span>
-      </div>
-
-      <div class="team-setup">
-        <div class="team" id="team1">
-          <h2>Team 1</h2>
-          <div class="formation">
-            <div class="row">
-              <div class="player" data-position="forward1"></div>
-              <div class="player" data-position="forward2"></div>
-            </div>
-            <div class="row">
-              <div class="player" data-position="midfielder"></div>
-            </div>
-            <div class="row">
-              <div class="player" data-position="defender1"></div>
-              <div class="player" data-position="defender2"></div>
-            </div>
-            <div class="row">
-              <div class="player" data-position="goalkeeper"></div>
+      <main>
+        <section class="team-setup">
+          <div class="team" id="team1">
+            <h2>Team 1</h2>
+            <div class="formation">
+              <div class="row">
+                <div class="player" data-position="forward1"></div>
+                <div class="player" data-position="forward2"></div>
+              </div>
+              <div class="row">
+                <div class="player" data-position="midfielder"></div>
+              </div>
+              <div class="row">
+                <div class="player" data-position="defender1"></div>
+                <div class="player" data-position="defender2"></div>
+              </div>
+              <div class="row">
+                <div class="player" data-position="goalkeeper"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="team" id="team2">
-          <h2>Team 2</h2>
-          <div class="formation">
-            <div class="row">
-              <div class="player" data-position="forward1"></div>
-              <div class="player" data-position="forward2"></div>
-            </div>
-            <div class="row">
-              <div class="player" data-position="midfielder"></div>
-            </div>
-            <div class="row">
-              <div class="player" data-position="defender1"></div>
-              <div class="player" data-position="defender2"></div>
-            </div>
-            <div class="row">
-              <div class="player" data-position="goalkeeper"></div>
+          <div class="team" id="team2">
+            <h2>Team 2</h2>
+            <div class="formation">
+              <div class="row">
+                <div class="player" data-position="forward1"></div>
+                <div class="player" data-position="forward2"></div>
+              </div>
+              <div class="row">
+                <div class="player" data-position="midfielder"></div>
+              </div>
+              <div class="row">
+                <div class="player" data-position="defender1"></div>
+                <div class="player" data-position="defender2"></div>
+              </div>
+              <div class="row">
+                <div class="player" data-position="goalkeeper"></div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <div class="player-input">
-        <h2>Add Player</h2>
-        <select id="team-select">
-          <option value="team1">Team 1</option>
-          <option value="team2">Team 2</option>
-        </select>
-        <input type="text" id="player-name" placeholder="Player Name" />
-        <input type="number" id="player-price" placeholder="Price" />
-        <select id="player-position">
-          <option value="goalkeeper">Goalkeeper</option>
-          <option value="defender1">Defender 1</option>
-          <option value="defender2">Defender 2</option>
-          <option value="midfielder">Midfielder</option>
-          <option value="forward1">Forward 1</option>
-          <option value="forward2">Forward 2</option>
-        </select>
-        <button onclick="addPlayer()">Add Player</button>
-      </div>
+        <section class="player-input">
+          <h2>Add Player</h2>
+          <select id="team-select">
+            <option value="team1">Team 1</option>
+            <option value="team2">Team 2</option>
+          </select>
+          <input type="text" id="player-name" placeholder="Player Name" />
+          <input type="number" id="player-price" placeholder="Price" />
+          <select id="player-position">
+            <option value="goalkeeper">Goalkeeper</option>
+            <option value="defender1">Defender 1</option>
+            <option value="defender2">Defender 2</option>
+            <option value="midfielder">Midfielder</option>
+            <option value="forward1">Forward 1</option>
+            <option value="forward2">Forward 2</option>
+          </select>
+          <button onclick="addPlayer()">Add Player</button>
+        </section>
 
-      <div class="captain-selection">
-        <h2>Select Captain</h2>
-        <select id="captain-select">
-          <option value="">Select Captain</option>
-        </select>
-      </div>
+        <section class="captain-selection">
+          <h2>Select Captain</h2>
+          <select id="captain-select">
+            <option value="">Select Captain</option>
+          </select>
+          <button onclick="selectCaptain()">Confirm Captain</button>
+        </section>
 
-      <div class="performance-update">
-        <h2>Update Performance</h2>
-        <select id="update-team">
-          <option value="team1">Team 1</option>
-          <option value="team2">Team 2</option>
-        </select>
-        <select id="update-player">
-          <option value="">Select Player</option>
-        </select>
-        <button onclick="addGoal()">Add Goal</button>
-        <button onclick="addAssist()">Add Assist</button>
-      </div>
+        <section class="performance-update">
+          <h2>Update Performance</h2>
+          <select id="update-team">
+            <option value="team1">Team 1</option>
+            <option value="team2">Team 2</option>
+          </select>
+          <select id="update-player">
+            <option value="">Select Player</option>
+          </select>
+          <button onclick="addGoal()">Add Goal</button>
+          <button onclick="addAssist()">Add Assist</button>
+        </section>
 
-      <div class="points-display">
-        <h2>Points</h2>
-        <div id="points-list"></div>
-      </div>
+        <section class="points-display">
+          <h2>Points</h2>
+          <div id="points-list"></div>
+        </section>
+      </main>
     </div>
 
     <script src="script.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   </body>
 </html>

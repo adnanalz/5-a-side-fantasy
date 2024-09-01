@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
@@ -84,7 +84,7 @@ h2 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.player-input, .captain-selection, .performance-update {
+.player-input, .captain-selection, .performance-update, .points-display {
     background-color: #ecf0f1;
     padding: 20px;
     border-radius: 8px;
@@ -116,20 +116,15 @@ button:hover {
     background-color: #2980b9;
 }
 
-.points-display {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 #points-list {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .team-points {
     width: 48%;
+    margin-bottom: 20px;
 }
 
 .team-points h3 {
@@ -162,20 +157,52 @@ button:hover {
     }
 }
 
-#auth-container, #logout-container {
-    margin-bottom: 20px;
+#auth-container {
+    max-width: 300px;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #fff;
     border-radius: 8px;
-  }
-  
-  #auth-container input {
-    display: block;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#auth-container h2 {
+    text-align: center;
+    color: #3498db;
+}
+
+#auth-container input {
+    width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
-    padding: 5px;
-    width: 200px;
-  }
-  
-  #auth-container button, #logout-container button {
-    margin-right: 10px;
-  }
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#auth-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#auth-container button:hover {
+    background-color: #2980b9;
+}
+
+#auth-container p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#auth-container a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.container {
+    display: none;
+}
